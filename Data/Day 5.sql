@@ -14,3 +14,15 @@ SELECT MIN(age) AS Min_Age, MAX(age) AS Max_Age
 FROM patients;
 
 
+
+-- Day 5 Challange:
+-- Calculate the total number of patients admitted, total patients refused, and the average patient satisfaction across all services and weeks.
+-- Round the average satisfaction to 2 decimal places.
+SELECT 
+SUM(patients_admitted) AS Total_Patients_Admitted, 
+SUM(patients_refused) AS Total_Patients_Refused,
+ROUND(AVG(patient_satisfaction),2) AS AVG_Satisfaction
+ FROM services_weekly;
+ 
+ 
+ 
