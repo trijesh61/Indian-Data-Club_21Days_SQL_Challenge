@@ -9,4 +9,8 @@ SELECT AVG(satisfaction) AS Average_Satisfaction_Score
 FROM patients;
 
 
--- 
+-- Find the minimum and maximum age of patients.
+SELECT MIN(age) AS Min_Age, MAX(age) AS Max_Age
+FROM patients;
+
+
