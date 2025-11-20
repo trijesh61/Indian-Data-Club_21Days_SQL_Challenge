@@ -1,7 +1,5 @@
 create database The_Great_Pizza_Analytics;
 
-use The_Great_Pizza_Analytics;
-
 -- 1. Create the pizza_types table (No Foreign Keys)
 CREATE TABLE pizza_types (
     pizza_type_id VARCHAR(50) PRIMARY KEY, -- e.g., 'bbq_ckn'
