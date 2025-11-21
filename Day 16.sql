@@ -39,3 +39,4 @@ WHERE p.service IN (
     WHERE total_admitted > 1000
 );
 
+-- Daily Challenge: 
