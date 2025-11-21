@@ -24,4 +24,17 @@ WHERE s.service IN (
 );
 
 
-
+-- 3. Show patients from services where total admitted patients exceed 1000.
+SELECT p.patient_id, p.name, p.age, p.arrival_date, p.departure_date, p.service, p.satisfaction
+FROM patients p
+WHERE p.service IN (
+    SELECT service
+    FROM (
+        SELECT 
+            service,
+            SUM(patients_admitted) AS total_admitted
+        FROM services_weekly
+        GROUP BY service
+    ) t
+    WHERE total_admitted > 1000
+);
