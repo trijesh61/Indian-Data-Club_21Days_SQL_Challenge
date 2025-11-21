@@ -40,3 +40,24 @@ WHERE p.service IN (
 );
 
 -- Daily Challenge: 
+/* Find all patients who were admitted to services that had at least one week where patients were refused AND 
+	the average patient satisfaction for that service was below the overall hospital average satisfaction. 
+	Show patient_id, name, service, and their personal satisfaction score. */
+    SELECT p.patient_id, p.name, p.service, p.satisfaction
+FROM patients p
+WHERE p.service IN (SELECT service
+    FROM (SELECT service,
+            AVG(patient_satisfaction) AS avg_sat
+        FROM services_weekly
+        GROUP BY service
+    ) svc
+    WHERE avg_sat < (SELECT AVG(patient_satisfaction)
+        FROM services_weekly
+    )
+    AND service IN (
+        SELECT DISTINCT service
+        FROM services_weekly
+        WHERE patients_refused > 0
+    )
+);
+    
