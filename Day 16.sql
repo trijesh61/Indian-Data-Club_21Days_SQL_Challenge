@@ -38,3 +38,4 @@ WHERE p.service IN (
     ) t
     WHERE total_admitted > 1000
 );
+
