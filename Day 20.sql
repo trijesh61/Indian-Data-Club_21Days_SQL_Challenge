@@ -8,9 +8,6 @@ FROM ( SELECT
 	) AS weekly_rank
 WHERE patient_satisfaction_rank <= 3;
 
-
-
-
 -- 2. Find the moving average of patient satisfaction over 4-week periods.
 select 
     week,
