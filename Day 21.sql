@@ -34,3 +34,28 @@ cte_rates AS (
 )
 SELECT *
 FROM cte_rates;
+
+-- 3: Build a CTE for staff utilization and join it with patient data.
+WITH staff_cte AS (
+    SELECT 
+        service,
+        COUNT(staff_id) AS total_staff
+    FROM staff
+    GROUP BY service
+),
+patient_cte AS (
+    SELECT 
+        service,
+        COUNT(patient_id) AS total_patients,
+        ROUND(AVG(satisfaction), 2) AS average_satisfaction
+    FROM patients
+    GROUP BY service
+)
+SELECT s.service, s.total_staff, p.total_patients, p.average_satisfaction
+FROM staff_cte s
+JOIN patient_cte p 
+    ON s.service = p.service
+ORDER BY s.service;
+
+
+
